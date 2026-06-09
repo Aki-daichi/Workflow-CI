@@ -4,4 +4,4 @@ matplotlib
 seaborn
 scikit-learn
 notebook
-mlflow
+mlflow==2.19.0
