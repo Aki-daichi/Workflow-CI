@@ -40,32 +40,31 @@ def save_confusion_matrix(y_test, y_pred):
 def train():
     X_train, X_test, y_train, y_test = load_data()
 
-    with mlflow.start_run(run_name="RandomForest-Baseline"):
-        # Aktifkan autolog
-        mlflow.sklearn.autolog()
+    # Aktifkan autolog
+    mlflow.sklearn.autolog()
 
-        # Training model
-        model = RandomForestClassifier(random_state=42)
-        model.fit(X_train, y_train)
+    # Training model
+    model = RandomForestClassifier(random_state=42)
+    model.fit(X_train, y_train)
 
-        # Evaluasi
-        y_pred = model.predict(X_test)
-        accuracy  = accuracy_score(y_test, y_pred)
-        precision = precision_score(y_test, y_pred)
-        recall    = recall_score(y_test, y_pred)
-        f1        = f1_score(y_test, y_pred)
+    # Evaluasi
+    y_pred = model.predict(X_test)
+    accuracy  = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall    = recall_score(y_test, y_pred)
+    f1        = f1_score(y_test, y_pred)
 
-        print(f"\n📊 Hasil Evaluasi:")
-        print(f"  Accuracy : {accuracy:.4f}")
-        print(f"  Precision: {precision:.4f}")
-        print(f"  Recall   : {recall:.4f}")
-        print(f"  F1 Score : {f1:.4f}")
+    print(f"\n📊 Hasil Evaluasi:")
+    print(f"  Accuracy : {accuracy:.4f}")
+    print(f"  Precision: {precision:.4f}")
+    print(f"  Recall   : {recall:.4f}")
+    print(f"  F1 Score : {f1:.4f}")
 
-        # Simpan dan log confusion matrix
-        save_confusion_matrix(y_test, y_pred)
-        mlflow.log_artifact('confusion_matrix.png')
+    # Simpan dan log confusion matrix
+    save_confusion_matrix(y_test, y_pred)
+    mlflow.log_artifact('confusion_matrix.png')
 
-    print("\n✅ Training selesai! Cek MLflow UI di http://127.0.0.1:5000")
+    print("\n✅ Training selesai!")
 
 if __name__ == "__main__":
     train()
