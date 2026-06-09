@@ -33,11 +33,12 @@ jobs:
 
       - name: Get latest MLflow run_id
         run: |
+          cd MLProject
           python -c "
           import mlflow
+          mlflow.set_tracking_uri('mlruns')
           client = mlflow.tracking.MlflowClient()
           exp = client.get_experiment_by_name('Diabetes-Classification')
           runs = client.search_runs(exp.experiment_id, order_by=['start_time DESC'], max_results=1)
           print('Latest run_id:', runs[0].info.run_id)
           "
-        working-directory: ${{ github.workspace }}

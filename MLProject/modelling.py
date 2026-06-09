@@ -8,7 +8,7 @@ import seaborn as sns
 import os
 
 # ===== KONFIGURASI MLFLOW =====
-mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+mlflow.set_tracking_uri("mlruns")
 mlflow.set_experiment("Diabetes-Classification")
 
 # ===== LOAD DATA =====
