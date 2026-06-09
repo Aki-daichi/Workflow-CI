@@ -29,7 +29,8 @@ jobs:
       - name: Run mlflow project
         run: |
           cd MLProject
-          mlflow run . --env-manager=local
+          mlflow end-run
+          mlflow run . --env-manager=local --experiment-name Diabetes-Classification
 
       - name: Get latest MLflow run_id
         run: |
