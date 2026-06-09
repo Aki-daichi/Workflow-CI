@@ -29,7 +29,6 @@ jobs:
       - name: Run mlflow project
         run: |
           mlflow run MLProject --env-manager=local
-        working-directory: ${{ github.workspace }}
 
       - name: Get latest MLflow run_id
         run: |
