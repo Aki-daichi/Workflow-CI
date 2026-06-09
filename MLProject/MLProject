@@ -1,7 +1,7 @@
 name: Diabetes-Classification
 
-conda_env: MLProject/conda.yaml
+conda_env: conda.yaml
 
 entry_points:
   main:
-    command: "python MLProject/modelling.py"
+    command: "python modelling.py"
