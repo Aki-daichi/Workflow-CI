@@ -29,6 +29,7 @@ jobs:
       - name: Run mlflow project
         run: |
           mlflow run MLProject --env-manager=local
+        working-directory: ${{ github.workspace }}
 
       - name: Get latest MLflow run_id
         run: |
@@ -39,3 +40,4 @@ jobs:
           runs = client.search_runs(exp.experiment_id, order_by=['start_time DESC'], max_results=1)
           print('Latest run_id:', runs[0].info.run_id)
           "
+        working-directory: ${{ github.workspace }}
